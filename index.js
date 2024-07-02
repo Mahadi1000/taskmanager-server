@@ -17,7 +17,7 @@ const client = new MongoClient(uri, {
   },
 });
 
-async function run() {
+async function run () {
   try {
     await client.connect();
     const db = await client.db("taskmaster");
@@ -140,6 +140,12 @@ async function run() {
   }
 }
 run().catch(console.dir);
+
+
+app.get("/", (req, res) => {
+  res.send("Simple Task Manager Crud is running...");
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

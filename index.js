@@ -10,7 +10,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://task-master-client-side.vercel.app/",
+      "https://task-master-client-side.vercel.app",
     ],
     credentials: true,
   })

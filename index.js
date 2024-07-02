@@ -3,15 +3,14 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      // "https://service-sharing-6d792.firebaseapp.com",
-      // "https://service-sharing-6d792.web.app",
+      "https://task-master-client-side.vercel.app/",
     ],
     credentials: true,
   })
@@ -143,7 +142,8 @@ async function run () {
       }
     });
 
-
+await client.db("admin").command({ ping: 1 });
+console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Do not close the client connection in finally block
   }

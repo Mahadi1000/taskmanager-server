@@ -6,7 +6,16 @@ const app = express();
 const port = 5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      // "https://service-sharing-6d792.firebaseapp.com",
+      // "https://service-sharing-6d792.web.app",
+    ],
+    credentials: true,
+  })
+);
 
 const uri = process.env.DATABASE_URI;
 const client = new MongoClient(uri, {
